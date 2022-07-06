@@ -62,6 +62,24 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/swa-easytokens-namedValues.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          }
+        }
+      },
+      "name": "namedValuesTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
           "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/swa-easytokens-authorizations-api.template.json', parameters('LinkedTemplatesUrlQueryString'))]",
           "contentVersion": "1.0.0.0"
         },
@@ -81,6 +99,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'namedValuesTemplate')]",
         "[resourceId('Microsoft.Resources/deployments', 'globalServicePolicyTemplate')]"
       ]
     }

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "SubscriptionId": {
+      "type": "string"
+    },
+    "ResourceGroupId": {
+      "type": "string"
+    },
+    "ServiceId": {
+      "type": "string"
+    },
+    "ARMAPIVersion": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "ARMAPIVersion",
+        "value": "[concat(parameters('ARMAPIVersion'), '')]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/ARMAPIVersion')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "ResourceGroupId",
+        "value": "[concat(parameters('ResourceGroupId'), '')]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/ResourceGroupId')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "ServiceId",
+        "value": "[concat(parameters('ServiceId'), '')]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/ServiceId')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "tags": [],
+        "secret": false,
+        "displayName": "SubscriptionId",
+        "value": "[concat(parameters('SubscriptionId'), '')]"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/SubscriptionId')]",
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2021-01-01-preview"
+    }
+  ]
+}

@@ -3,19 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "ApimServiceName": {
-      "value": ""
+      "value": " "
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/deploy"
+      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/templates"
     },
     "LinkedTemplatesUrlQueryString": {
       "value": " "
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/deploy/policies"
+      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/templates/policies"
     },
     "PolicyXMLSasToken": {
       "value": " "
+    },
+    "SubscriptionId": {
+      "value": ""
+    },
+    "ResourceGroupId": {
+       "value": ""
+    },
+    "ServiceId": {
+       "value": ""
+    },
+    "ARMAPIVersion": {
+       "value": ""
     }
   },
   "resources": []
