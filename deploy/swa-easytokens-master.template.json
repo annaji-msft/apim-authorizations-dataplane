@@ -31,6 +31,18 @@
       "metadata": {
         "description": "The SAS token for the URL of the policy container"
       }
+    },
+    "SubscriptionId": {
+      "type": "string"
+    },
+    "ResourceGroupId": {
+      "type": "string"
+    },
+    "ServiceId": {
+      "type": "string"
+    },
+    "ARMAPIVersion": {
+      "type": "string"
     }
   },
   "resources": [
