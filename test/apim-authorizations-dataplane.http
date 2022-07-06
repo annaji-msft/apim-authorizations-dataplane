@@ -1,0 +1,44 @@
+
+@apimHost = 
+@apimSubscriptionKey = 
+@providerId = 
+@authorizationId = 
+@postLoginRedirectUrl = https://bing.com
+
+### Get Providers
+POST {{apimHost}}/api/.tokens/providers HTTP/1.1
+Ocp-Apim-Subscription-Key: {{apimSubscriptionKey}}
+Ocp-Apim-Trace: true
+
+### Check Authorization Status
+GET {{apimHost}}/api/.tokens/status/{{providerId}} HTTP/1.1
+Ocp-Apim-Subscription-Key: {{apimSubscriptionKey}}
+Ocp-Apim-Trace: true
+authorizationId: {{authorizationId}}
+
+### Create Authorization for one of the providers
+### The below call should return login url if not authenticated
+POST {{apimHost}}/api/.tokens/create/{{providerId}} HTTP/1.1
+Ocp-Apim-Subscription-Key: {{apimSubscriptionKey}}
+Ocp-Apim-Trace: true
+authorizationId: {{authorizationId}}
+postLoginRedirectUrl: {{postLoginRedirectUrl}}
+
+### Check Authorization Status
+GET {{apimHost}}/api/.tokens/status/{{providerId}} HTTP/1.1
+Ocp-Apim-Subscription-Key: {{apimSubscriptionKey}}
+Ocp-Apim-Trace: true
+authorizationId: {{authorizationId}}
+
+### Delete Authorization
+GET {{apimHost}}/api/.tokens/delete/{{providerId}} HTTP/1.1
+Ocp-Apim-Subscription-Key: {{apimSubscriptionKey}}
+Ocp-Apim-Trace: true
+authorizationId: {{authorizationId}}
+
+
+### Check Authorization Status
+GET {{apimHost}}/api/.tokens/status/{{providerId}} HTTP/1.1
+Ocp-Apim-Subscription-Key: {{apimSubscriptionKey}}
+Ocp-Apim-Trace: true
+authorizationId: {{authorizationId}}

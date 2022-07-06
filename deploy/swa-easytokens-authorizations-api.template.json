@@ -1,0 +1,255 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLSasToken": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": true,
+        "displayName": "Authorizations",
+        "serviceUrl": "https://management.azure.com/",
+        "path": "api/.tokens",
+        "protocols": [
+          "https"
+        ]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "contentType": "application/vnd.oai.openapi.components+json",
+        "document": {
+          "components": {
+            "schemas": {
+              "ProvidersPostRequest": {
+                "type": "",
+                "x-apim-inline": true
+              },
+              "Connect-providerName-PostRequest": {
+                "type": "string",
+                "x-apim-inline": true
+              },
+              "Connect-providerName-PostRequest-1": {
+                "type": "string",
+                "x-apim-inline": true
+              },
+              "Connect-providerName-PostRequest-2": {
+                "type": "string",
+                "x-apim-inline": true
+              }
+            }
+          }
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/62c5005501234e10ac41ef84')]",
+      "type": "Microsoft.ApiManagement/service/apis/schemas",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'authorizations')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "providerId",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [
+            {
+              "name": "authorizationId",
+              "type": "",
+              "required": true,
+              "values": []
+            },
+            {
+              "name": "postLoginRedirectUrl",
+              "type": "",
+              "required": true,
+              "values": []
+            }
+          ],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "connect",
+        "method": "POST",
+        "urlTemplate": "/create/{providerId}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/connect')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'authorizations')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/authorizations-connect-operationPolicy.xml', parameters('PolicyXMLSasToken'))]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/connect/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'authorizations', 'connect')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "providerId",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [
+            {
+              "name": "authorizationId",
+              "type": "",
+              "required": true,
+              "values": []
+            }
+          ],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "disconnect",
+        "method": "POST",
+        "urlTemplate": "/delete/{providerId}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/disconnect')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'authorizations')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/authorizations-disconnect-operationPolicy.xml', parameters('PolicyXMLSasToken'))]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/disconnect/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'authorizations', 'disconnect')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "providers",
+        "method": "POST",
+        "urlTemplate": "/providers"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/providers')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'authorizations')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/authorizations-providers-operationPolicy.xml', parameters('PolicyXMLSasToken'))]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/providers/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'authorizations', 'providers')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "providerId",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [
+            {
+              "name": "authorizationId",
+              "type": "",
+              "required": true,
+              "values": []
+            }
+          ],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "status",
+        "method": "GET",
+        "urlTemplate": "/status/{providerId}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/status')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'authorizations')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/authorizations-status-operationPolicy.xml', parameters('PolicyXMLSasToken'))]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/authorizations/status/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'authorizations', 'status')]"
+      ]
+    }
+  ]
+}
