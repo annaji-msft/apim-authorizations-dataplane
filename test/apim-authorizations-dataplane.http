@@ -3,7 +3,7 @@
 @apimSubscriptionKey = 
 @providerId = 
 @authorizationId = 
-@postLoginRedirectUrl = https://bing.com
+@postLoginRedirectUrl = 
 
 ### Get Providers
 POST {{apimHost}}/api/.tokens/providers HTTP/1.1

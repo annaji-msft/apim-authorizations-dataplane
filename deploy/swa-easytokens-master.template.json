@@ -80,6 +80,18 @@
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
+          },
+          "SubscriptionId": {
+            "value": "[parameters('SubscriptionId')]"
+          },
+          "ResourceGroupId": {
+            "value": "[parameters('ResourceGroupId')]"
+          },
+          "ServiceId": {
+            "value": "[parameters('ServiceId')]"
+          },
+          "ARMAPIVersion": {
+            "value": "[parameters('ARMAPIVersion')]"
           }
         }
       },
