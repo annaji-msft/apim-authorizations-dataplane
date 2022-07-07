@@ -12,4 +12,6 @@ Also create Authorization providers that you would want to use for the applicati
 
 az deployment group create --resource-group apim-rg --template-file swa-easytokens-master.template.json --parameters swa-easytokens-parameters.json --parameters ApimServiceName=test-apim --parameters SubscriptionId=159d7683-f4a0-4b15-8ecc-8542203d3c54 --parameters ResourceGroupId=apim-rg --parameters ServiceId=test-apim --parameters ARMAPIVersion=2021-12-01-preview
 
+Turn on System Assigned Managed Identity for APIM and give it permissions as contributor to the API Management Service. 
+
 After the above command succefully runs you can validate by using the .http file in test folder. This requires rest client vscode extension
