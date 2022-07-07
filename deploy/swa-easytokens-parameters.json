@@ -6,13 +6,13 @@
       "value": " "
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/templates"
+      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/deploy"
     },
     "LinkedTemplatesUrlQueryString": {
       "value": " "
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/templates/policies"
+      "value": "https://raw.githubusercontent.com/annaji-msft/apim-authorizations-dataplane/main/deploy/policies"
     },
     "PolicyXMLSasToken": {
       "value": " "
